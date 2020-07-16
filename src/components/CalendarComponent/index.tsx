@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
+
+import 'react-big-calendar/lib/css/react-big-calendar.css';
 import moment from 'moment';
+import api from '../../services/api';
 
 import './styles.css';
-import 'react-big-calendar/lib/css/react-big-calendar.css';
-import api from '../../services/api';
 
 type AbscenceType = "sickness" | "vacation";
 
@@ -54,25 +55,32 @@ const CalendarComponent = () => {
         title: `${members.find(
           member => member.userId === absence.userId)!.name} is 
           ${absence.type === "vacation" ?
-          "on vacation"
-          : "sick"}`,
+            "on vacation"
+            : "sick"}`,
         name: members.find(member => member.userId === absence.userId)!.name,
       }));
 
       setEvents(eventWithTitle);
     }
   }, [members, absences]);
-  
+
   return (
-    <div className={"CalendarContainer"}>
-      {events && <Calendar
-        localizer={localizer}
-        events={events}
-        defaultDate={new Date(2017, 0, 1)}
-        startAccessor="start"
-        endAccessor="end"
-      />}
-    </div>
+    <>
+      <div className={"CalendarContainer"}>
+        {events && <Calendar
+          localizer={localizer}
+          events={events}
+          startAccessor="start"
+          endAccessor="end"
+          popup
+        />}
+      </div>
+      <a className={"DownloadLink"} href="http://localhost:3333/calendar">
+        <button>
+          Import Calendar
+        </button>
+      </a>
+    </>
   )
 }
 

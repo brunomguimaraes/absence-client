@@ -1,3 +1,8 @@
 .CalendarContainer {
-  height: 560px;
+  height: 540px;
+  margin: 24px 40px 24px 40px;
+}
+
+.DownloadLink {
+  margin-left: 40px;
 }
