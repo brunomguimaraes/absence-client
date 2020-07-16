@@ -17,3 +17,7 @@ Done!
 
 ### TO-DOS:
 * Add tests
+
+* Improve design
+
+<img style="-webkit-user-select: none;margin: auto;cursor: zoom-in;" src="https://i.imgur.com/n6dTYpU.png" width="708" height="335">
