@@ -6,19 +6,6 @@ import './styles.css';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import api from '../../services/api';
 
-const mockEvents = [
-  {
-    start: '2020-07-20',
-    end: '2020-07-22',
-    title: 'test event',
-  },
-  {
-    start: '2015-07-19',
-    end: '2015-07-25',
-    title: 'test event2',
-  },
-];
-
 type AbscenceType = "sickness" | "vacation";
 
 interface Member {
@@ -31,15 +18,15 @@ interface Absence {
   id: number;
   userId: number;
   type: AbscenceType;
-  startDate: string;
-  endDate: string;
+  startDate: Date;
+  endDate: Date;
 }
 
 interface Event {
   userId: number;
   name: string;
-  start: string;
-  end: string;
+  start: Date;
+  end: Date;
   title: string;
 }
 
