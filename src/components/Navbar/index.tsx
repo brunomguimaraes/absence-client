@@ -13,7 +13,7 @@ const NavBar = () => {
   };
 
     return (
-      <Menu id={"navbar-menu"} onClick={handleClick} mode="horizontal">
+      <Menu onClick={handleClick} mode="horizontal">
         <Menu.Item key="calendar" icon={<CalendarOutlined />}>
           Calendar
         </Menu.Item>
