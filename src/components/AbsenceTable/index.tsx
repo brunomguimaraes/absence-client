@@ -1,6 +1,11 @@
 
 import React, { useEffect, useState } from 'react';
+import { Table, Tag } from 'antd';
+
 import api from '../../services/api';
+
+import 'antd/dist/antd.css';
+import './styles.css';
 
 interface Member {
   id: number,
@@ -30,7 +35,7 @@ type AbsenceWithMember = Member & Absence;
 
 const AbsenceTable = () => {
   const [members, setMembers] = useState<Member[]>([]);
-  const [absencesWithEmployee, setAbsencesWithEmployee] = useState<AbsenceWithMember[]| any>([]);
+  const [absencesWithEmployee, setAbsencesWithEmployee] = useState<AbsenceWithMember[]| any>();
   const [absences, setAbsences] = useState<Absence[]>([]);
 
   useEffect(() => {
@@ -52,21 +57,38 @@ const AbsenceTable = () => {
     }
   }, [members, absences]);
 
+  
+  const tableColumns = [
+    {
+      title: 'Name',
+      dataIndex: 'name',
+      key: 'name',
+      sorter: (a: any, b: any) => { return a.name.localeCompare(b.name)},
+    },
+    {
+      title: 'Type',
+      dataIndex: 'type',
+      key: 'type',
+      render: (type: string) => <Tag color={type === "vacation" ? "green" : "orange"}>{type}</Tag>,
+      sorter: (a: any, b: any) => { return a.type.localeCompare(b.type)},
+    },
+    {
+      title: 'From',
+      dataIndex: 'startDate',
+      key: 'startDate',
+    },
+    {
+      title: 'To',
+      dataIndex: 'endDate',
+      key: 'endDate',
+    },
+    
+  ];
+
   return (
     <div className={"AbsenceTable"}>
       <h1>Absences:</h1>
-      <table>
-        <tbody>
-          {absencesWithEmployee!.map((obj: AbsenceWithMember) => (
-            <tr key={obj.id}>
-              <td>{obj.name}</td>
-              <td>{obj.type}</td>
-              <td>{obj.startDate}</td>
-              <td>{obj.endDate}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      {absencesWithEmployee && <Table columns={tableColumns} dataSource={absencesWithEmployee!} />}
     </div>
   );
 };

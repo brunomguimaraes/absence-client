@@ -2,13 +2,12 @@
 import React from 'react';
 import AbsenceTable from '../../components/AbsenceTable';
 
-const Home = () => {
+const Absences = () => {
     return (
-        <div id="page-home">
-          Welcome!
+        <div id="page-absences">
           <AbsenceTable />
         </div>
     );
 };
 
-export default Home;
+export default Absences;
