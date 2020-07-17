@@ -16,7 +16,6 @@ Done!
 - Typescript
 
 ### TO-DOS:
-* Add tests
 
 * Improve design
 
